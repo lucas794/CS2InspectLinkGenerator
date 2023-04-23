@@ -89,7 +89,10 @@
 		}
 
 		function copyClipboard() {
-			 navigator.clipboard.writeText(document.getElementById("output").innerHTML)
+			 const output = document.getElementById("output").innerHTML
+			 if( !output.contains('match') ) {
+			 	navigator.clipboard.writeText(document.getElementById("output").innerHTML) 
+			 }
 		}
 
 	</script>
