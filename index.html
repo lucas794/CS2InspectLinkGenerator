@@ -80,7 +80,6 @@
 			const regex = /.+(csgo_.+)(?=\%).+(S[A-Z0-9]+)/;
 			const match = input.match(regex)
 			const output = document.getElementById("output");
-            console.log(match)
 			if (match) {
 				output.innerHTML = `${match[1]} ${match[2]}`;
 				navigator.clipboard.writeText(output.innerHTML)
