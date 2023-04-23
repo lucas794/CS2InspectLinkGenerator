@@ -58,14 +58,20 @@
 			max-width: 80%;
 			line-height: 1.5;
 		}
+
+		#output
+		{
+			cursor: pointer;
+		}
 	</style>
 </head>
 <body>
 	<div class="container">
 		<h1>CS2 Inspect Link Generator</h1>
+		<h5>Once generated, click in the command to copy to the clipboard!</h5>
 		<input type="text" id="input" placeholder="Enter a steam:// url with the item to inspect">
 		<button onclick="extractString()">Extract inspect link</button>
-		<p id="output"></p>
+		<p id="output" onclick="copyClipboard()"></p>
 	</div>
 
 	<script>
@@ -77,10 +83,16 @@
             console.log(match)
 			if (match) {
 				output.innerHTML = `${match[1]} ${match[2]}`;
+				navigator.clipboard.writeText(output.innerHTML)
 			} else {
 				output.innerHTML = "No match found / wrong link";
 			}
 		}
+
+		function copyClipboard() {
+			 navigator.clipboard.writeText(document.getElementById("output").innerHTML)
+		}
+
 	</script>
 </body>
 </html>
